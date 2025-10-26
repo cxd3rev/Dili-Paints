@@ -1,0 +1,376 @@
+/* -------------------------
+   Basis & reset
+   ------------------------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #222;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================
+   HEADER (ONVERANDERD)
+   ========================= */
+header {
+    width: 100%;
+    padding: 10px 20px;
+    height: 700px;
+    box-sizing: border-box;
+    background-image: url(images/background8.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.h1header{
+    margin-top: -20px;
+    font-size: 3.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    color: white;
+}
+
+.h12header{
+    font-size: 3.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    color: white;
+    margin-top: -38px;
+}
+
+.pheader{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+}
+
+.p2header{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+    margin-top: -20px;
+}
+
+.offerte-button-block{
+    padding-left: 80px;
+    padding-top: 130px;
+}
+
+.offerte-button {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 20px 26px;
+    background-color: #141b59; /* zelfde blauw als titel */
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+    box-shadow: 0 6px 18px rgba(31,41,118,0.12);
+    border: none;
+    cursor: pointer;
+}
+
+/* visuele 'klik' feedback (JS voegt klasse) */
+.offerte-button.clicked {
+    transform: translateY(2px) scale(0.997);
+    box-shadow: 0 3px 10px rgba(31,41,118,0.08);
+}
+
+.offerte-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(31,41,118,0.14);
+    background-color: #141b59de;
+}
+
+.contact-button {
+    display: inline-block;
+    margin-top: 22px;
+    margin-left: 20px;
+    padding: 20px 26px;
+    background-color: #ffffff; /* zelfde blauw als titel */
+    color: #1f2976;
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+    box-shadow: 0 6px 18px rgba(31,41,118,0.12);
+    border: none;
+    cursor: pointer;
+}
+
+/* visuele 'klik' feedback (JS voegt klasse) */
+.contact-button.clicked {
+    transform: translateY(2px) scale(0.997);
+    box-shadow: 0 3px 10px rgba(31,41,118,0.08);
+}
+
+.contact-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(31,41,118,0.14);
+    background-color: #ffffffab;
+}
+
+.logo {
+    height: 90px; /* iets groter maar netjes */
+}
+
+/* Navigatie */
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem; /* iets groter */
+    font-weight: 550;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #141b59;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+
+.over-ons {
+    padding: 80px 20px;
+}
+
+.overons-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* LINKER KOLOM: logo */
+.overons-left {
+    flex: 0 0 320px; /* vaste breedte voor logoblok */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.overons-logo {
+    max-width: 150%;
+    padding: 10px;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* RECHTER KOLOM: tekst */
+.overons-right {
+    flex: 1 1 auto;
+    min-width: 260px;
+}
+
+.eyebrow {
+    font-size: 0.95rem;
+    color: #000000;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+}
+
+.overons-title {
+    font-size: 2.6rem;
+    margin: 0 0 18px 0;
+    color: #000000; 
+    line-height: 1.05;
+}
+
+.overons-copy p {
+    margin: 0 0 14px 0;
+    line-height: 1.7;
+    font-size: 1.03rem;
+    color: #000000;
+}
+
+/* offerte knop */
+.offerte-btn {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 12px 26px;
+    background-color: #141b59; /* zelfde blauw als titel */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+    box-shadow: 0 6px 18px rgba(31,41,118,0.12);
+    border: none;
+    cursor: pointer;
+}
+
+/* visuele 'klik' feedback (JS voegt klasse) */
+.offerte-btn.clicked {
+    transform: translateY(2px) scale(0.997);
+    box-shadow: 0 3px 10px rgba(31,41,118,0.08);
+}
+
+.offerte-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(31,41,118,0.14);
+    background-color: #141b59f1;
+}
+
+.waarom-dili {
+    max-width: 1200px;
+    margin: 60px auto;
+}
+
+
+.waarom-dili-txt {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+
+
+.waarom-dili-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.card i {
+    color: #141b59;
+    margin-bottom: 15px;
+}
+
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+
+.card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+@media (max-width: 768px) {
+.waarom-dili-cards {
+    flex-direction: column;
+    align-items: center;
+}
+}
+
+.section-placeholder {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+footer {
+    border-top: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+
+/* =========================
+   Responsive behavior
+   ========================= */
+@media (max-width: 900px) {
+    .overons-inner {
+        gap: 30px;
+        padding: 0 10px;
+    }
+
+    .overons-left {
+        flex: 0 0 220px;
+    }
+
+    .overons-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .overons-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .overons-left {
+        flex: 0 0 auto;
+        margin-bottom: 18px;
+    }
+
+    .overons-right {
+        width: 100%;
+    }
+
+    .overons-title {
+        font-size: 1.9rem;
+    }
+
+    .overons-copy p {
+        font-size: 1rem;
+    }
+
+    .offerte-btn {
+        width: 100%;
+        display: inline-block;
+        padding: 14px 18px;
+    }
+}
