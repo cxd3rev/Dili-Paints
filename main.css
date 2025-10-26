@@ -23,7 +23,7 @@ header {
     padding: 10px 20px;
     height: 700px;
     box-sizing: border-box;
-    background-image: url(images/background8.jpg);
+    background-image: url(background8.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
