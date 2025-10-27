@@ -15,11 +15,11 @@
             <img src="logosite.png" class="logo" alt="Dili Paints Logo">
             <nav class="navbar">
                 <ul>
-                    <li><a href="">Over ons</a></li>
-                    <li><a href="">Waarom Dili</a></li>
-                    <li><a href="">Galerij</a></li>
-                    <li><a href="">Offerte</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="#over-ons">Over ons</a></li>
+                    <li><a href="#waarom-dili">Waarom Dili</a></li>
+                    <li><a href="#galerij">Galerij</a></li>
+                    <li><a href="#offerte">Offerte</a></li>
+                    <li><a href="#contact">Contacteer</a></li>
                 </ul>
             </nav>
         </div>
@@ -35,7 +35,7 @@
 
     <!-- === MAIN: Over ons sectie (gereconstrueerd / geïnspireerd) === -->
     <main>
-        <section class="over-ons">
+        <section class="over-ons" id="over-ons">
             <div class="overons-inner">
                 <!-- Logo links -->
                 <div class="overons-left" aria-hidden="false">
@@ -73,7 +73,7 @@
             </div>
         </section>
 
-        <section class="waarom-dili">
+        <section class="waarom-dili" id="waarom-dili">
             <div class="waarom-dili-inner">
                 <div class="waarom-dili-txt">
                     <h1>Waarom Dili</h1>
@@ -98,19 +98,53 @@
             </div>
         </section>
 
-        <section class="section-placeholder">
+        <section class="section-placeholder" id="galerij">
             <h2>Galerij</h2>
             <!-- inhoud... -->
         </section>
 
-        <section class="section-placeholder">
-            <h2>Offerte</h2>
-            <!-- inhoud... -->
+        <section class="offerte" id="offerte">
+            <h2>Offerte aanvragen</h2>
+            <form action="email.php" method="POST" class="offerte-form">
+                <div class="form-group">
+                    <label for="name">Naam</label>
+                    <input type="text" id="name" name="name" required placeholder="Uw naam">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mailadres</label>
+                    <input type="email" id="email" name="email" required placeholder="Uw e-mailadres">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Uw aanvraag / bericht</label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Beschrijf uw project of vraag..."></textarea>
+                </div>
+                </form>
+
+                <button type="submit" class="btn-submit">Verzenden</button>
+            </form>
         </section>
 
-        <section class="section-placeholder">
-            <h2>Contact</h2>
-            <!-- inhoud... -->
+
+        <section class="contact" id="contact">
+            <h2>Contacteer ons</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+32 476 46 70 93</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>info@dilipaints.be</span>
+                    </div>
+                </div>
+
+                <div class="socials">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
         </section>
     </main>
 
