@@ -18,7 +18,7 @@ header {
     padding: 10px 20px;
     height: 700px;
     box-sizing: border-box;
-    background-image: url(images/background8.jpg);
+    background-image: url(background8.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -213,7 +213,7 @@ header {
     display: inline-block;
     margin-top: 22px;
     padding: 12px 26px;
-    background-color: #141b59; /* zelfde blauw als titel */
+    background-color: #141b59; 
     color: #fff;
     font-size: 1rem;
     font-weight: 600;
