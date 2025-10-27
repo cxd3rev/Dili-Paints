@@ -509,6 +509,37 @@ footer {
         display: none;
     }
 
+    .offerte-button-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .offerte-button,
+    .contact-button {
+        width: 80%; 
+        max-width: 300px; 
+        margin: 8px 0; 
+        font-size: 1rem;
+    }
+
+    .h1header,
+    .h12header,
+    .pheader,
+    .p2header {
+        text-align: center;
+    }
+
+    .h12header{
+        margin-top: -20px;
+    }
+
+    .p2header{
+        margin-bottom: 30px;
+    }
 }
 
 /* Small Phones */
