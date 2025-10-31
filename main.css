@@ -16,6 +16,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+
 /* Header */
 header {
     width: 100%;
@@ -31,7 +32,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    width: 1200px;
     margin: 0 auto;
 }
 
@@ -39,17 +40,17 @@ header {
 .h12header {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 500;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .h1header {
     margin-top: -20px;
-    font-size: 3.5rem;
+    font-size: 4.2rem;
 }
 
 .h12header {
-    margin-top: -38px;
-    font-size: 3.5rem;
+    margin-top: -50px;
+    font-size: 4.2rem;
 }
 
 .pheader,
@@ -62,6 +63,7 @@ header {
 .p2header {
     margin-top: -20px;
 }
+
 
 /* Buttons */
 .offerte-button-block {
@@ -129,10 +131,12 @@ header {
     background-color: #141b59f1;
 }
 
+
 /* Logo */
 .logo {
     height: 90px;
 }
+
 
 /* Navigation */
 .navbar ul {
@@ -157,6 +161,7 @@ header {
     color: #ffffff;
     border-radius: 4px;
 }
+
 
 /* Over-ons Section */
 .over-ons {
@@ -216,6 +221,7 @@ header {
     color: #000;
 }
 
+
 /* Waarom-dili Section */
 .waarom-dili {
     max-width: 1200px;
@@ -268,67 +274,101 @@ header {
     line-height: 1.6;
 }
 
+
 /* Offerte Section */
 .offerte {
-    max-width: 800px;
-    margin: 60px auto;
-    padding: 40px 20px;
-    background: #efefef93;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 50px 40px;
+  background: #ffffffee;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offerte:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 .offerte h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem;
-    color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  color: #222;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
-.offerte-form .form-group {
-    margin-bottom: 20px;
+.offerte-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
-.offerte-form label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #333;
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
 }
 
 .offerte-form input,
 .offerte-form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    outline: none;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fafafa;
+  color: #333;
+  transition: all 0.25s ease;
 }
 
 .offerte-form input:focus,
 .offerte-form textarea:focus {
-    border-color: #1e90ff;
+  border-color: #1e90ff;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
+  outline: none;
 }
 
 .btn-submit {
-    background: #141b59;
-    color: #fff;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    transition: background 0.3s;
+  background: linear-gradient(135deg, #141b59, #1f28a1);
+  color: #fff;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(20, 27, 89, 0.15);
 }
 
 .btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(31,41,118,0.14);
-    background-color: #141b59ec;
+  background: linear-gradient(135deg, #1f28a1, #141b59);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(20, 27, 89, 0.2);
 }
+
+.form-actions {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .offerte {
+    padding: 35px 25px;
+  }
+
+  .offerte h2 {
+    font-size: 1.8rem;
+  }
+}
+
 
 /* Contact Section */
 .contact {
@@ -385,12 +425,14 @@ header {
     color: #1e90ff;
 }
 
+
 /* Section Placeholder */
 .section-placeholder {
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
 }
+
 
 /* Footer */
 footer {
@@ -406,14 +448,24 @@ footer {
     margin: 0 auto;
 }
 
+
 /* ------------------ Media Queries ------------------ */
 
 /* Desktop -> Tablet */
 @media (max-width: 1024px) {
     header {
+        text-align: center;
         height: auto;
         padding: 40px 20px;
         background-position: center;
+    }
+
+    .h1header,
+    .h12header,
+    .pheader,
+    .p2header {
+        text-align: center;
+        color: #000;
     }
     .header-container {
         flex-direction: column;
@@ -436,6 +488,7 @@ footer {
     }
 }
 
+
 /* Tablet (iPad landscape) */
 @media (max-width: 900px) {
     .navbar ul {
@@ -457,6 +510,7 @@ footer {
     }
 }
 
+
 /* Mobile (iPad portrait / larger phones) */
 @media (max-width: 768px) {
     .waarom-dili-cards {
@@ -464,6 +518,7 @@ footer {
         align-items: center;
     }
 }
+
 
 /* Mobile (phones) */
 @media (max-width: 640px) {
@@ -479,7 +534,8 @@ footer {
     }
 
     .overons-logo {
-        max-width: 90%;
+        margin-top: -70px;
+        max-width: 60%;
         height: auto;
     }
 
@@ -495,18 +551,8 @@ footer {
         font-size: 1rem;
     }
 
-    .offerte-btn,
-    .offerte-button,
-    .contact-button {
-        width: 100%;
-        display: inline-block;
-        padding: 14px 18px;
-        font-size: 1rem;
-        text-align: center;
-    }
-
     .navbar {
-        display: none;
+    display: none;
     }
 
     .offerte-button-block {
@@ -521,9 +567,9 @@ footer {
     .offerte-button,
     .contact-button {
         width: 80%; 
-        max-width: 300px; 
+        max-width: 250px; 
         margin: 8px 0; 
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 
     .h1header,
@@ -531,16 +577,29 @@ footer {
     .pheader,
     .p2header {
         text-align: center;
+        color: #000;
+    }
+
+    .h1header{
+        margin-top: 20px;
     }
 
     .h12header{
         margin-top: -20px;
+        margin-bottom: 50px;
     }
 
     .p2header{
-        margin-bottom: 30px;
+        margin-bottom: 40px;
     }
+
+    .pheader,
+    .p2header {
+        display: none;
+    }
+
 }
+
 
 /* Small Phones */
 @media (max-width: 480px) {
