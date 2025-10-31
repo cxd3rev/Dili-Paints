@@ -23,7 +23,7 @@ header {
     padding: 10px 20px;
     height: 700px;
     box-sizing: border-box;
-    background-image: url(background8.jpg);
+    background-image: url(images/background8.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -32,7 +32,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -49,7 +49,7 @@ header {
 }
 
 .h12header {
-    margin-top: -50px;
+    margin-top: -38px;
     font-size: 4.2rem;
 }
 
