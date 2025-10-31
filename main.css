@@ -572,6 +572,12 @@ footer {
         font-size: 1.3rem;
     }
 
+    .logo {
+        height: 90px;
+        max-width: 100%;
+        display: block;
+    }
+
     .h1header,
     .h12header,
     .pheader,
