@@ -14,6 +14,7 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffffca;
 }
 
 
@@ -23,7 +24,7 @@ header {
     padding: 10px 20px;
     height: 700px;
     box-sizing: border-box;
-    background-image: url(background8.jpg);
+    background-image: url(images/background8.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -135,7 +136,10 @@ header {
 /* Logo */
 .logo {
     height: 90px;
+    max-width: 100%;
+    display: block;
 }
+
 
 
 /* Navigation */
@@ -162,6 +166,81 @@ header {
     border-radius: 4px;
 }
 
+/*locaties*/
+
+.locaties {
+  width: 100%;
+  overflow: hidden;           
+  background: transparent;    
+  padding: 0.5rem 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.locaties .ticker {
+  display: flex;
+  align-items: center;
+}
+
+.locaties .ticker__move {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem; 
+  animation: scroll-left 60s linear infinite;
+  white-space: nowrap;
+}
+
+.locaties .ticker__move span {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  letter-spacing: 0.3px;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* animatie */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.locaties::before,
+.locaties::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 10%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.locaties::before {
+  left: 0;
+  background: linear-gradient(to right, white 0%, transparent 100%);
+}
+
+.locaties::after {
+  right: 0;
+  background: linear-gradient(to left, white 0%, transparent 100%);
+}
+
+/* responsief */
+@media (max-width: 768px) {
+  .locaties .ticker__move span {
+    font-size: 0.95rem;
+  }
+  .locaties .ticker__move {
+    gap: 2rem;
+    animation-duration: 45s;
+  }
+}
 
 /* Over-ons Section */
 .over-ons {
@@ -280,7 +359,7 @@ header {
   max-width: 700px;
   margin: 80px auto;
   padding: 50px 40px;
-  background: #ffffffee;
+  background: #b7b7b744;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(4px);
@@ -376,7 +455,7 @@ header {
     margin: 60px auto;
     padding: 40px 20px;
     text-align: center;
-    background-color: #8dafd24f;
+    background-color: #8db0d229;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
@@ -577,6 +656,7 @@ footer {
         max-width: 100%;
         display: block;
     }
+
 
     .h1header,
     .h12header,
