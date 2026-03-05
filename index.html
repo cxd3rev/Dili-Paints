@@ -245,6 +245,16 @@
             });
         });
     </script>
+
+    <script>
+        const toggle = document.getElementById("menu-toggle");
+        const navbar = document.getElementById("navbar");
+
+        toggle.addEventListener("click", function() {
+        toggle.classList.toggle("active");
+        navbar.classList.toggle("active");
+        });
+    </script>
 </body>
 </html>
 
