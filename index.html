@@ -6,22 +6,23 @@
     <title>Dili Paints</title>
     <link rel="icon" type="image/png" href="icon.png" />
     <link rel="stylesheet" href="main.css" />
+    <meta name="description" content="Dili Paints - Professionele schilderwerken in Vlaanderen. Binnen- en buitenschilderwerken met oog voor detail en kwaliteit.">
     <script src="https://kit.fontawesome.com/62bc92d4d0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 <!-- Header -->
-     <header>
+    <header>
         <div class="header-container">
             <img src="icon.png" class="logo" alt="Dili Paints Logo">
             <h1 class="title">Dili Paints</h1>
-                <div class="menu-toggle" id="menu-toggle">
+                <div class="menu-toggle" id="menu-toggle" aria-label="Menu openen" role="button">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
 
-            <nav class="navbar" id="navbar">
+            <nav class="navbar" id="navbar" aria-label="Hoofdmenu">
                 <ul>
                     <li><a href="#over-ons">Over ons</a></li>
                     <li><a href="#waarom-dili">Waarom Dili</a></li>
@@ -41,10 +42,8 @@
     </header>
 
 
-
 <!-- Main -->
     <main>
-<br>
 <!-- locaties -->
         <section class="locaties" id="locaties" aria-label="Locaties">
         <div class="ticker">
@@ -134,7 +133,7 @@
         <section class="over-ons" id="over-ons">
             <div class="overons-inner">
                 <div class="overons-left" aria-hidden="false">
-                    <img src="images/logo.png" alt="Dili Paints logo - Over ons" class="overons-logo">
+                    <img src="logo.png" alt="Dili Paints logo - Over ons" class="overons-logo">
                 </div>
                 <div class="overons-right">
                     <div class="eyebrow">KLEUR MET KLASSE — Dili Paints</div>
@@ -204,11 +203,11 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fa-solid fa-phone"></i>
-                        <span>+32 476 46 70 93</span>
+                        <a href="tel:+32476467093">+32 476 46 70 93</a>
                     </div>
                     <div class="contact-item">
                         <i class="fa-solid fa-envelope"></i>
-                        <span>fadil.vasolli@telenet.be</span>
+                        <a href="mailto:fadil.vasolli@telenet.be">fadil.vasolli@telenet.be</a>
                     </div>
                 </div>
 
@@ -250,9 +249,44 @@
         const toggle = document.getElementById("menu-toggle");
         const navbar = document.getElementById("navbar");
 
-        toggle.addEventListener("click", function() {
+        toggle.addEventListener("click", () => {
+
+        const expanded = toggle.getAttribute("aria-expanded") === "true";
+
         toggle.classList.toggle("active");
         navbar.classList.toggle("active");
+
+        toggle.setAttribute("aria-expanded", !expanded);
+    });
+    </script>
+
+    <script>
+        document.querySelectorAll(".navbar a").forEach(link => {
+        link.addEventListener("click", () => {
+        navbar.classList.remove("active");
+        toggle.classList.remove("active");
+        });
+        });
+    </script>
+
+    <script>
+  // Add fade-in on scroll
+        const faders = document.querySelectorAll('header, .over-ons, .waarom-dili, .locaties, .section-placeholder, .contact, footer');
+
+        const appearOptions = {
+        threshold: 0.2
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, observer){
+        entries.forEach(entry => {
+            if(!entry.isIntersecting) return;
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+        });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+        appearOnScroll.observe(fader);
         });
     </script>
 </body>
