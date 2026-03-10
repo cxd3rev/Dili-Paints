@@ -6,7 +6,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
 body {
     margin: 0;
     padding: 0;
@@ -63,7 +62,7 @@ header > * {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 10px;
-    z-index: 1; 
+    z-index: 2; 
 }
 
 /* Logo */
@@ -443,7 +442,7 @@ header > * {
 }
 
 .card {
-    background-color: #fff;
+    background-color: #8db0d229;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
@@ -459,7 +458,7 @@ header > * {
 }
 
 .card i {
-    color: #141b59;
+    color: #003275;
     margin-bottom: 15px;
 }
 
@@ -569,7 +568,53 @@ header > * {
   }
 }
 
+/* Galerij Section */
+#galerij{
+    text-align:center;
+    padding:40px;
+}
 
+.galerij{
+    display:grid;
+    grid-template-columns: repeat(3, 300px);
+    gap:40px;
+    justify-content:center;
+}
+
+.foto-blok{
+    position:relative;
+}
+
+.slider{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.pijl{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,0.6);
+    color:white;
+    border:none;
+    font-size:25px;
+    padding:10px;
+    cursor:pointer;
+}
+
+.links{
+    left:10px;
+}
+
+.rechts{
+    right:10px;
+}
+
+.fotos{
+    display:none;
+}
 /* Contact Section */
 .contact {
     max-width: 1200px;
@@ -651,225 +696,403 @@ footer {
 
 /* ------------------ Media Queries ------------------ */
 
-/* Desktop -> Tablet */
+/* ============================= */
+/* RESPONSIVE DESIGN */
+/* ============================= */
+
+/* Tablet */
 @media (max-width: 1024px) {
-    header {
-        text-align: center;
-        height: auto;
-        padding: 40px 20px;
-        background-position: center;
-    }
 
-    .h1header,
-    .h12header,
-    .pheader,
-    .p2header {
-        text-align: center;
-        color: #000;
-    }
-    .header-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-    .logo {
-        height: 70px;
-    }
-    .h1header, .h12header {
-        font-size: 2.5rem;
-        margin-top: 0;
-    }
-    .pheader, .p2header {
-        font-size: 1.2rem;
-    }
-    .offerte-button-block {
-        padding-left: 0;
-        padding-top: 30px;
-    }
-    /* Hamburger menu visible */
-
-.menu-toggle {
-    display: flex;
+header{
+    height: 600px;
 }
 
-.navbar {
-    position: absolute;
-    top: 90px;
-    right: 20px;
+.title{
+    font-size: 2rem;
 }
 
-.navbar ul {
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-end;
+.logo{
+    height: 70px;
 }
 
-.navbar a {
-    color: #000;
-    font-size: 18px;
-    padding-left: 18px;
-    position: relative;
+.h1header,
+.h12header{
+    font-size: 3.2rem;
 }
 
-.navbar a::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    }
+.pheader,
+.p2header{
+    font-size: 1.3rem;
 }
 
+.offerte-button-block{
+    padding-left: 40px;
+    padding-top: 100px;
+}
 
-/* Tablet (iPad landscape) */
-@media (max-width: 900px) {
-    .navbar ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
+.offerte-button,
+.contact-button{
+    font-size: 1.1rem;
+    padding: 16px 22px;
+}
 
-    .overons-inner {
-        gap: 30px;
-    }
+.overons-inner{
+    gap:40px;
+}
 
-    .overons-left {
-        flex: 0 0 220px;
-    }
+.overons-title{
+    font-size:2.2rem;
+}
 
-    .overons-title {
-        font-size: 2.2rem;
-    }
-    .navbar ul {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 14px;
-    }
+.overons-logo{
+    max-width:120%;
+}
+
+.waarom-dili{
+    margin:50px 20px;
+}
+
+.card{
+    width:260px;
+}
+
+.offerte{
+    max-width:600px;
+}
+
+/* Galerij */
+
+.galerij{
+    grid-template-columns: repeat(2, 280px);
+    gap:30px;
+}
+
+.slider{
+    height:320px;
 }
 
 
-/* Mobile (iPad portrait / larger phones) */
+/* Contact */
+
+.contact{
+    margin:50px 20px;
+}
+
+.contact h2{
+    font-size:1.8rem;
+}
+
+.contact-info{
+    gap:30px;
+}
+
+
+/* Section placeholder */
+
+.section-placeholder{
+    margin:30px 20px;
+}
+
+}
+
+
+/* Grote gsm */
 @media (max-width: 768px) {
-    .waarom-dili-cards {
-        flex-direction: column;
-        align-items: center;
-    }
-    .menu-toggle {
-    width: 30px;
-    height: 22px;
-    }
-    .offerte-button-block {
+
+header{
+    height: 520px;
+}
+
+.header-container{
+    grid-template-columns: auto 1fr auto;
+}
+
+.logo{
+    height: 60px;
+}
+
+.title{
+    font-size: 1.6rem;
+}
+
+.h1header,
+.h12header{
+    font-size: 2.5rem;
+}
+
+.pheader,
+.p2header{
+    font-size: 1.1rem;
+}
+
+.offerte-button-block{
+    padding-left: 20px;
     padding-top: 80px;
 }
+
+.offerte-button,
+.contact-button{
+    padding: 14px 20px;
+    font-size: 1rem;
+}
+
+.navbar{
+    right: 10px;
+    min-width: 200px;
+}
+
+/* Over ons */
+
+.overons-inner{
+    flex-direction:column;
+    text-align:center;
+    gap:30px;
+}
+
+.overons-left{
+    flex:unset;
+}
+
+.overons-logo{
+    max-width:80%;
+}
+
+.overons-title{
+    font-size:2rem;
+}
+
+.overons-copy p{
+    font-size:1rem;
 }
 
 
-/* Mobile (phones) */
-@media (max-width: 640px) {
-    .overons-inner {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+/* Waarom dili */
 
-    .overons-left {
-        flex: 0 0 auto;
-        margin-bottom: 18px;
-    }
+.waarom-dili-txt{
+    font-size:1.6rem;
+}
 
-    .overons-logo {
-        margin-top: -70px;
-        max-width: 60%;
-        height: auto;
-    }
-
-    .overons-right {
-        width: 100%;
-    }
-
-    .overons-title {
-        font-size: 1.9rem;
-    }
-
-    .overons-copy p {
-        font-size: 1rem;
-    }
-
-    .offerte-button-block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 40px 20px;
-    }
-
-    .offerte-button,
-    .contact-button {
-        width: 80%; 
-        max-width: 250px; 
-        margin: 8px 0; 
-        font-size: 1.3rem;
-    }
-
-    .logo {
-        height: 90px;
-        max-width: 100%;
-        display: block;
-    }
+.card{
+    width:100%;
+    max-width:420px;
+}
 
 
-    .h1header,
-    .h12header,
-    .pheader,
-    .p2header {
-        text-align: center;
-        color: #000;
-    }
+/* Offerte */
 
-    .h1header{
-        margin-top: 20px;
-    }
+.offerte{
+    margin:60px 20px;
+    padding:40px 30px;
+}
 
-    .h12header{
-        margin-top: -20px;
-        margin-bottom: 50px;
-    }
+.offerte h2{
+    font-size:2rem;
+}
 
-    .p2header{
-        margin-bottom: 40px;
-    }
+/* Galerij */
 
-    .pheader,
-    .p2header {
-        display: none;
-    }
+.galerij{
+    grid-template-columns: 1fr;
+    gap:30px;
+}
 
-    .navbar {
-        display: none;
-    }
+.foto-blok{
+    max-width:420px;
+    margin:0 auto;
+}
 
-    .navbar.active {
-        display: block;
-    }
+.slider{
+    height:320px;
+}
+
+.pijl{
+    font-size:22px;
+    padding:8px;
+}
+
+
+/* Contact */
+
+.contact{
+    padding:30px 20px;
+}
+
+.contact-info{
+    flex-direction:column;
+    gap:15px;
+}
+
+.contact-item{
+    justify-content:center;
+}
+
+
+/* Socials */
+
+.socials{
+    gap:15px;
+}
 
 }
 
 
-/* Small Phones */
+/* Kleine gsm */
 @media (max-width: 480px) {
-    .h1header, .h12header {
-        font-size: 2rem;
-    }
-    .pheader, .p2header {
-        font-size: 1rem;
-    }
-    .header-container {
-        gap: 10px;
-    }
-    header {
-        padding: 20px;
-    }
-    body {
-        overflow-x: hidden;
-    }
+
+header{
+    height: 460px;
+    padding: 15px;
 }
+
+.logo{
+    height: 50px;
+}
+
+.title{
+    font-size: 1.3rem;
+}
+
+.h1header,
+.h12header{
+    font-size: 2rem;
+}
+
+.pheader,
+.p2header{
+    font-size: 0.95rem;
+}
+
+.offerte-button-block{
+    padding-left: 10px;
+    padding-top: 60px;
+}
+
+.offerte-button,
+.contact-button{
+    display:block;
+    margin-left:0;
+    margin-top:12px;
+    width:fit-content;
+}
+
+.menu-toggle{
+    width:30px;
+    height:22px;
+}
+
+.navbar{
+    right:5px;
+    top:70px;
+}
+
+/* Locaties ticker */
+
+.locaties .ticker__move span{
+    font-size:0.85rem;
+}
+
+.locaties .ticker__move{
+    gap:1.5rem;
+    animation-duration:40s;
+}
+
+
+/* Over ons */
+
+.over-ons{
+    padding:60px 15px;
+}
+
+.overons-title{
+    font-size:1.7rem;
+}
+
+.eyebrow{
+    font-size:0.8rem;
+}
+
+.overons-copy p{
+    font-size:0.95rem;
+}
+
+
+/* Waarom dili */
+
+.waarom-dili{
+    margin:40px 15px;
+}
+
+.waarom-dili-txt{
+    font-size:1.4rem;
+}
+
+.card{
+    padding:18px;
+}
+
+
+/* Offerte */
+
+.offerte{
+    padding:30px 20px;
+}
+
+.offerte h2{
+    font-size:1.6rem;
+}
+
+.offerte-form input,
+.offerte-form textarea{
+    padding:12px 14px;
+}
+
+.btn-submit{
+    width:100%;
+    padding:14px;
+}
+
+/* Galerij */
+
+#galerij{
+    padding:30px 15px;
+}
+
+.slider{
+    height:260px;
+}
+
+.pijl{
+    font-size:20px;
+    padding:6px;
+}
+
+
+/* Contact */
+
+.contact{
+    margin:40px 15px;
+}
+
+.contact h2{
+    font-size:1.6rem;
+}
+
+.contact-item{
+    font-size:0.95rem;
+}
+
+.socials a{
+    font-size:1.3rem;
+}
+
+
+/* Footer */
+
+footer{
+    font-size:0.85rem;
+    padding:15px;
+}
+
+}
+
 
