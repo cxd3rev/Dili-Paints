@@ -192,10 +192,58 @@
         </section>
 
 <!-- Galerij -->
-        <section class="section-placeholder" id="galerij">
-            <h2>Galerij</h2>
-        </section>
+<section id="galerij">
 
+<h2>Galerij</h2>
+
+<div class="galerij">
+
+    <!-- blok 1 -->
+    <div class="foto-blok">
+        <button class="pijl links" onclick="wisselFoto(this,-1)">❮</button>
+        <img src="IMG_7026.jpeg" class="slider">
+        <button class="pijl rechts" onclick="wisselFoto(this,1)">❯</button>
+        <div class="fotos">
+            <img src="IMG_7026.jpeg">
+            <img src="IMG_7035.jpeg">
+            <img src="IMG_7041.jpeg">
+            <img src="IMG_7906.jpeg">
+            <img src="IMG_7990.jpeg">
+            <img src="IMG_7907.jpeg">
+        </div>
+    </div>
+
+    <!-- blok 2 -->
+    <div class="foto-blok">
+        <button class="pijl links" onclick="wisselFoto(this,-1)">❮</button>
+        <img src="IMG_7001.jpeg" class="slider">
+        <button class="pijl rechts" onclick="wisselFoto(this,1)">❯</button>
+        <div class="fotos">
+            <img src="IMG_7001.jpeg">
+            <img src="IMG_7009.jpeg">
+            <img src="IMG_7012.jpeg">
+            <img src="IMG_7861.jpeg">
+            <img src="IMG_7867.jpeg">
+            <img src="IMG_7904.jpeg">
+        </div>
+    </div>
+
+    <!-- blok 3 -->
+    <div class="foto-blok">
+        <button class="pijl links" onclick="wisselFoto(this,-1)">❮</button>
+        <img src="klant.jpeg" class="slider">
+        <button class="pijl rechts" onclick="wisselFoto(this,1)">❯</button>
+        <div class="fotos">
+            <img src="klant.jpeg">
+            <img src="IMG_6984.jpeg">
+            <img src="IMG_6993.jpeg">
+            <img src="IMG_7995.jpeg">
+        </div>
+    </div>
+
+</div>
+
+</section>
 
 <!-- Contacteer -->
         <section class="contact" id="contact">
@@ -288,6 +336,28 @@
         faders.forEach(fader => {
         appearOnScroll.observe(fader);
         });
+    </script>
+
+    <script>
+
+    function wisselFoto(knop, richting){
+
+        const blok = knop.parentElement;
+        const slider = blok.querySelector(".slider");
+        const fotos = blok.querySelectorAll(".fotos img");
+
+        let index = slider.dataset.index || 0;
+        index = parseInt(index);
+
+        index += richting;
+
+        if(index < 0) index = fotos.length - 1;
+        if(index >= fotos.length) index = 0;
+
+        slider.src = fotos[index].src;
+        slider.dataset.index = index;
+        }
+
     </script>
 </body>
 </html>
