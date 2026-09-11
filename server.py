@@ -170,15 +170,15 @@ class Handler(SimpleHTTPRequestHandler):
         if path in {"/admin.php", "/admin"}:
             self.render_admin(urllib.parse.parse_qs(parsed.query))
             return
-        if path == "/main.html":
+        if path == "/index.html":
             query = parsed.query
-            location = "/index.html" + (f"?{query}" if query else "")
+            location = "/main.html" + (f"?{query}" if query else "")
             self.send_response(301)
             self.send_header("Location", location)
             self.end_headers()
             return
-        if path in {"/", "/index.html"}:
-            self.path = "/index.html"
+        if path in {"/", "/main.html"}:
+            self.path = "/main.html"
         super().do_GET()
 
     def do_POST(self):
@@ -244,7 +244,7 @@ class Handler(SimpleHTTPRequestHandler):
             self.json_response({"ok": True, "mailed": sent, "message": text})
             return
         self.send_response(303)
-        self.send_header("Location", "/index.html?status=ok#contact")
+        self.send_header("Location", "/main.html?status=ok#contact")
         self.end_headers()
 
     def is_authed(self) -> bool:
@@ -320,7 +320,7 @@ class Handler(SimpleHTTPRequestHandler):
         html.write(".login-form{max-width:360px;display:flex;flex-direction:column;gap:12px}")
         html.write(".login-form input{padding:12px 14px;border-radius:12px;border:1px solid var(--line);font:inherit}")
         html.write(".message{white-space:pre-wrap}.muted{color:var(--muted)}.badge{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}</style></head><body>")
-        html.write("<header class='site-header'><div class='nav-bar'><a class='brand' href='/index.html'>")
+        html.write("<header class='site-header'><div class='nav-bar'><a class='brand' href='/main.html'>")
         html.write("<span class='brand-mark'><img src='/icon.png' class='logo' alt=''></span><span class='brand-name'>Dili Paints</span></a>")
         if authed:
             html.write("<a class='nav-cta' style='display:inline-flex' href='/admin.php?export=1'>Export CSV</a>")
@@ -380,6 +380,6 @@ if __name__ == "__main__":
         save_leads([])
     port = int(os.environ.get("PORT", "8766"))
     server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
-    print(f"Dili Paints server: http://127.0.0.1:{port}/index.html")
+    print(f"Dili Paints server: http://127.0.0.1:{port}/main.html")
     print(f"Offerte-inbox:     http://127.0.0.1:{port}/admin.php")
     server.serve_forever()

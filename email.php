@@ -18,7 +18,7 @@ function dili_respond(bool $ok, string $message, int $code = 200, bool $mailed =
     }
 
     $status = $ok ? 'ok' : 'error';
-    header('Location: index.html?status=' . $status . '#contact');
+    header('Location: main.html?status=' . $status . '#contact');
     exit;
 }
 
