@@ -314,7 +314,7 @@ class Handler(SimpleHTTPRequestHandler):
         html.write(".login-form input{padding:12px 14px;border-radius:12px;border:1px solid var(--line);font:inherit}")
         html.write(".message{white-space:pre-wrap}.muted{color:var(--muted)}.badge{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}</style></head><body>")
         html.write("<header class='site-header'><div class='nav-bar'><a class='brand' href='/main.html'>")
-        html.write("<span class='brand-mark'><img src='/images/icon.png' class='logo' alt=''></span><span class='brand-name'>Dili Paints</span></a>")
+        html.write("<span class='brand-mark'><img src='/icon.png' class='logo' alt=''></span><span class='brand-name'>Dili Paints</span></a>")
         if authed:
             html.write("<a class='nav-cta' style='display:inline-flex' href='/admin.php?export=1'>Export CSV</a>")
             html.write("<a href='/admin.php?logout=1'>Uitloggen</a>")

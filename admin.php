@@ -84,7 +84,7 @@ $h = static fn($value) => htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8')
     <header class="site-header">
         <div class="nav-bar">
             <a class="brand" href="main.html">
-                <span class="brand-mark"><img src="images/icon.png" alt="" class="logo"></span>
+                <span class="brand-mark"><img src="icon.png" alt="" class="logo"></span>
                 <span class="brand-name">Dili Paints</span>
             </a>
             <?php if ($authed): ?>

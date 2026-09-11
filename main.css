@@ -274,7 +274,7 @@ a {
     min-height: calc(100svh - var(--header-h));
     background:
         linear-gradient(105deg, rgba(12, 27, 54, 0.88) 0%, rgba(12, 27, 54, 0.52) 46%, rgba(12, 27, 54, 0.18) 100%),
-        url("images/background8.jpg") center / cover no-repeat;
+        url("background8.jpg") center / cover no-repeat;
     display: flex;
     align-items: flex-end;
     color: var(--white);
@@ -622,7 +622,7 @@ a {
 .contact {
     background:
         linear-gradient(180deg, rgba(12, 27, 54, 0.96), rgba(12, 27, 54, 0.92)),
-        url("images/background8.jpg") center / cover no-repeat;
+        url("background8.jpg") center / cover no-repeat;
     color: var(--white);
 }
 
