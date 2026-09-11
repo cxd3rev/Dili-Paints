@@ -1,0 +1,38 @@
+[
+  {
+    "id": "69b2e5175618d849",
+    "created_at": "2026-09-10 19:31:27",
+    "name": "Aron Vasolli",
+    "email": "aronvasolli12@gmail.com",
+    "phone": "+32468563364",
+    "message": "test email 3.0",
+    "status": "nieuw"
+  },
+  {
+    "id": "c733a880f548e8f3",
+    "created_at": "2026-09-10 19:30:58",
+    "name": "Aron Vasolli",
+    "email": "aronvasolli12@gmail.com",
+    "phone": "+32468563364",
+    "message": "test email 2",
+    "status": "nieuw"
+  },
+  {
+    "id": "54eadeaeaefc4f68",
+    "created_at": "2026-09-10 19:28:20",
+    "name": "Aron",
+    "email": "aronvasolli12@gmail.com",
+    "phone": "+32468563364",
+    "message": "test mail om te zien waar dit beland en hoe het eruit komt te zien",
+    "status": "nieuw"
+  },
+  {
+    "id": "5cbde6b723848554",
+    "created_at": "2026-09-10 19:06:05",
+    "name": "Aron Test",
+    "email": "aron@example.com",
+    "phone": "",
+    "message": "Testaanvraag via het offerteformulier.",
+    "status": "nieuw"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "notify_emails": [
+    "fadil.vasolli@telenet.be",
+    "aronvasolli12@gmail.com"
+  ],
+  "formsubmit_ids": [
+    "53880aa256f2347aec1e57883e2a6ae4"
+  ],
+  "from_name": "Dili Paints",
+  "from_email": "fadil.vasolli@telenet.be",
+  "admin_password": "DiliLeads2026",
+  "smtp_host": "smtp.telenet.be",
+  "smtp_port": 587,
+  "smtp_user": "fadil.vasolli@telenet.be",
+  "smtp_password": ""
+}
