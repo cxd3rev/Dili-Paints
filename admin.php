@@ -61,30 +61,35 @@ $h = static fn($value) => htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offertes | Dili Paints</title>
+    <link rel="icon" type="image/png" href="logo-dili.png">
     <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
         .admin-wrap { max-width: 1080px; margin: 40px auto 80px; padding: 0 20px; }
-        .admin-card { background: #fff; border-radius: 20px; padding: 28px; box-shadow: var(--shadow); }
+        .admin-card { background: var(--surface); border-radius: 20px; padding: 28px; border: 1px solid var(--line); box-shadow: 0 0 48px var(--sage-glow); }
         .admin-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 22px; }
-        .lead { border: 1px solid var(--line); border-radius: 16px; padding: 18px; margin: 0 0 14px; background: var(--paper); }
+        .lead { border: 1px solid var(--line); border-radius: 16px; padding: 18px; margin: 0 0 14px; background: var(--bg-2); }
         .lead-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
         .lead-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
         .lead-actions a, .lead-actions button { font: inherit; font-size: 0.85rem; font-weight: 700; border-radius: 999px; padding: 8px 12px; text-decoration: none; border: 0; cursor: pointer; }
-        .lead-actions a { background: var(--navy); color: #fff; }
-        .lead-actions button { background: #fff; color: var(--navy); border: 1px solid var(--line); }
+        .lead-actions a { background: var(--sage-mid); color: #f3f6f2; }
+        .lead-actions button { background: transparent; color: var(--sage-soft); border: 1px solid var(--line); }
         .muted { color: var(--muted); }
-        .badge { font-size: 0.75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+        .badge { font-size: 0.75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--sage-soft); }
         .login-form { max-width: 360px; display: flex; flex-direction: column; gap: 12px; }
-        .login-form input { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); font: inherit; }
+        .login-form input { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); font: inherit; background: #0c0f0d; color: var(--ink); }
         .empty { color: var(--muted); padding: 20px 0; }
         .message { white-space: pre-wrap; margin: 10px 0 0; }
+        .nav-bar > a:not(.brand):not(.nav-cta) { color: var(--sage-soft); text-decoration: none; font-weight: 600; }
     </style>
 </head>
 <body>
     <header class="site-header">
         <div class="nav-bar">
             <a class="brand" href="index.html">
-                <span class="brand-mark"><img src="icon.png" alt="" class="logo"></span>
+                <span class="brand-mark"><img src="logo-dili.png" alt="" class="logo"></span>
                 <span class="brand-name">Dili Paints</span>
             </a>
             <?php if ($authed): ?>
