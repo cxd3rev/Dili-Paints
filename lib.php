@@ -192,3 +192,68 @@ function dili_send_mail(array $lead, array $config): bool
     $headers .= 'Reply-To: ' . $lead['email'] . "\r\nContent-Type: text/plain; charset=UTF-8\r\n";
     return @mail($to, $subject, $body, $headers);
 }
+
+function dili_client_ip(): string
+{
+    $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+    return is_string($ip) && $ip !== '' ? $ip : '0.0.0.0';
+}
+
+function dili_rate_limited(int $max = 6, int $window = 3600): bool
+{
+    $path = __DIR__ . '/data/rate.json';
+    $dir = dirname($path);
+    if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
+    }
+
+    $ip = dili_client_ip();
+    $now = time();
+    $handle = fopen($path, 'c+');
+    if ($handle === false) {
+        return false;
+    }
+
+    flock($handle, LOCK_EX);
+    $raw = stream_get_contents($handle);
+    $data = $raw ? json_decode($raw, true) : [];
+    if (!is_array($data)) {
+        $data = [];
+    }
+
+    $times = [];
+    foreach (($data[$ip] ?? []) as $stamp) {
+        if (is_numeric($stamp) && ($now - (int) $stamp) < $window) {
+            $times[] = (int) $stamp;
+        }
+    }
+
+    $limited = count($times) >= $max;
+    if (!$limited) {
+        $times[] = $now;
+    }
+    $data[$ip] = $times;
+
+    foreach ($data as $key => $stamps) {
+        $keep = [];
+        foreach ((array) $stamps as $stamp) {
+            if (is_numeric($stamp) && ($now - (int) $stamp) < $window) {
+                $keep[] = (int) $stamp;
+            }
+        }
+        if ($keep) {
+            $data[$key] = $keep;
+        } else {
+            unset($data[$key]);
+        }
+    }
+
+    rewind($handle);
+    ftruncate($handle, 0);
+    fwrite($handle, json_encode($data));
+    fflush($handle);
+    flock($handle, LOCK_UN);
+    fclose($handle);
+
+    return $limited;
+}

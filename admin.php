@@ -79,6 +79,7 @@ $h = static fn($value) => htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8')
         .muted { color: var(--muted); }
         .badge { font-size: 0.75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--sage-soft); }
         .login-form { max-width: 360px; display: flex; flex-direction: column; gap: 12px; }
+        .login-form label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
         .login-form input { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); font: inherit; background: #0c0f0d; color: var(--ink); }
         .empty { color: var(--muted); padding: 20px 0; }
         .message { white-space: pre-wrap; margin: 10px 0 0; }
@@ -105,6 +106,7 @@ $h = static fn($value) => htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8')
                 <p class="eyebrow">Intern</p>
                 <h1>Offertes</h1>
                 <p class="muted">Log in om aanvragen te bekijken, te beantwoorden en te exporteren.</p>
+                <p class="muted">Wijzig het wachtwoord in <code>data/config.json</code> (veld <code>admin_password</code>).</p>
                 <?php if ($error): ?><p class="form-status error"><?= $h($error) ?></p><?php endif; ?>
                 <form class="login-form" method="post">
                     <input type="hidden" name="action" value="login">

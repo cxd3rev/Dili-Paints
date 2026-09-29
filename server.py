@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Local server for Dili Paints: static files + offerte inbox without PHP."""
+"""Local server for Dili Paints: static files + offerte inbox without PHP.
+On PHP hosting, Apache serves index.html with email.php and admin.php instead.
+Run: python server.py  then open http://127.0.0.1:8766/index.html
+"""
 
 from __future__ import annotations
 
@@ -10,6 +13,7 @@ import os
 import secrets
 import smtplib
 import ssl
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -23,6 +27,9 @@ DATA = ROOT / "data"
 CONFIG_PATH = DATA / "config.json"
 LEADS_PATH = DATA / "leads.json"
 CSV_PATH = DATA / "leads.csv"
+RATE_PATH = DATA / "rate.json"
+RATE_MAX = 6
+RATE_WINDOW = 3600
 SESSIONS: set[str] = set()
 BRUSSELS = timezone(timedelta(hours=2))
 
@@ -69,6 +76,33 @@ def save_leads(leads: list) -> None:
                 lead.get("status", ""),
                 lead.get("id", ""),
             ])
+
+
+def is_rate_limited(ip: str) -> bool:
+    now = time.time()
+    data: dict = {}
+    if RATE_PATH.exists():
+        try:
+            loaded = json.loads(RATE_PATH.read_text(encoding="utf-8"))
+            if isinstance(loaded, dict):
+                data = loaded
+        except json.JSONDecodeError:
+            data = {}
+
+    times = [stamp for stamp in data.get(ip, []) if isinstance(stamp, (int, float)) and now - stamp < RATE_WINDOW]
+    limited = len(times) >= RATE_MAX
+    if not limited:
+        times.append(now)
+    data[ip] = times
+
+    pruned = {}
+    for key, stamps in data.items():
+        keep = [stamp for stamp in stamps if isinstance(stamp, (int, float)) and now - stamp < RATE_WINDOW]
+        if keep:
+            pruned[key] = keep
+    DATA.mkdir(exist_ok=True)
+    RATE_PATH.write_text(json.dumps(pruned), encoding="utf-8")
+    return limited
 
 
 def send_via_formsubmit(lead: dict, recipients: list[str]) -> bool:
@@ -210,6 +244,14 @@ class Handler(SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def handle_offerte(self, fields: dict):
+        ip = self.client_address[0] if self.client_address else "0.0.0.0"
+        if is_rate_limited(ip):
+            self.json_response(
+                {"ok": False, "message": "Te veel aanvragen. Probeer later opnieuw of bel ons rechtstreeks."},
+                429,
+            )
+            return
+
         if fields.get("company_url", "").strip():
             self.json_response({"ok": True, "mailed": True, "message": "Bedankt, uw bericht is verzonden."})
             return
@@ -218,8 +260,15 @@ class Handler(SimpleHTTPRequestHandler):
         email = fields.get("email", "").strip()
         phone = fields.get("phone", "").strip()
         message = fields.get("message", "").strip()
+        privacy = fields.get("privacy", "").strip()
         if not name or not message or "@" not in email:
             self.json_response({"ok": False, "message": "Vul naam, een geldig e-mailadres en een bericht in."}, 422)
+            return
+        if privacy != "1":
+            self.json_response(
+                {"ok": False, "message": "Bevestig dat we contact mogen opnemen over deze aanvraag."},
+                422,
+            )
             return
 
         lead = {
@@ -320,6 +369,7 @@ class Handler(SimpleHTTPRequestHandler):
         html.write(".lead-actions a,.lead-actions button{font:inherit;font-size:.85rem;font-weight:700;border-radius:999px;padding:8px 12px;text-decoration:none;border:0;cursor:pointer}")
         html.write(".lead-actions a{background:var(--sage-mid);color:#f3f6f2}.lead-actions button{background:transparent;color:var(--sage-soft);border:1px solid var(--line)}")
         html.write(".login-form{max-width:360px;display:flex;flex-direction:column;gap:12px}")
+        html.write(".login-form label{display:flex;flex-direction:column;gap:6px;font-weight:600}")
         html.write(".login-form input{padding:12px 14px;border-radius:12px;border:1px solid var(--line);font:inherit;background:#0c0f0d;color:var(--ink)}")
         html.write(".message{white-space:pre-wrap}.muted{color:var(--muted)}.badge{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sage-soft)}")
         html.write(".nav-bar>a:not(.brand):not(.nav-cta){color:var(--sage-soft);text-decoration:none;font-weight:600}</style></head><body>")
@@ -332,6 +382,7 @@ class Handler(SimpleHTTPRequestHandler):
         if not authed:
             html.write("<p class='eyebrow'>Intern</p><h1>Offertes</h1>")
             html.write("<p class='muted'>Log in om aanvragen te bekijken, te beantwoorden en te exporteren.</p>")
+            html.write("<p class='muted'>Wijzig het wachtwoord in data/config.json (veld admin_password).</p>")
             if error:
                 html.write(f"<p class='form-status error'>{escape(error)}</p>")
             html.write("<form class='login-form' method='post'><input type='hidden' name='action' value='login'>")

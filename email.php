@@ -26,6 +26,10 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     dili_respond(false, 'Ongeldige aanvraag.', 405);
 }
 
+if (dili_rate_limited()) {
+    dili_respond(false, 'Te veel aanvragen. Probeer later opnieuw of bel ons rechtstreeks.', 429);
+}
+
 if (trim((string) ($_POST['company_url'] ?? '')) !== '') {
     dili_respond(true, 'Bedankt, uw bericht is verzonden.', 200, true);
 }
@@ -34,9 +38,14 @@ $name = trim((string) ($_POST['name'] ?? ''));
 $email = trim((string) ($_POST['email'] ?? ''));
 $phone = trim((string) ($_POST['phone'] ?? ''));
 $message = trim((string) ($_POST['message'] ?? ''));
+$privacy = (string) ($_POST['privacy'] ?? '');
 
 if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     dili_respond(false, 'Vul naam, een geldig e-mailadres en een bericht in.', 422);
+}
+
+if ($privacy !== '1') {
+    dili_respond(false, 'Bevestig dat we contact mogen opnemen over deze aanvraag.', 422);
 }
 
 if (strlen($name) > 120 || strlen($phone) > 40 || strlen($message) > 8000) {
